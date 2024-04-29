@@ -89,7 +89,7 @@ def train(root_dir, PATH, cuda_avail=True, transform: v2.Compose = None ):
     print(labels)
     # print the class of the image
 
-    net = Net(num_classes=len(classes))
+    net = Net2(num_classes=len(classes))
     print(
         net)  # https://stats.stackexchange.com/questions/380996/convolutional-network-how-to-choose-output-channels-number-stride-and-padding/381032#381032
 
@@ -166,7 +166,7 @@ def test(root_dir, PATH, cuda_avail=True, transform: v2.Compose=None):
     # reload
 
     # device = torch.device(dev)
-    net = Net(num_classes=len(classes))
+    net = Net2(num_classes=len(classes))
     # net.to(device)
     if cuda_avail:
         dev = "cuda:0"
@@ -217,7 +217,7 @@ if __name__ == '__main__':
         [
            v2.Resize((32, 32)),
            v2.ToTensor(),  # to tensor object
-           v2.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+           v2.Normalize((0.5,), (0.5,))
         ])  # mean = 0.5, std = 0.5
 
     # set batch_size
